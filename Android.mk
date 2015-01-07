@@ -1,6 +1,9 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
+# Wrapper to fix arm 64-bit builds using host prebuilt gcc
+ifneq ($(TARGET_ARCH),arm64)
+
 CSSTOH_SOURCE := $(LOCAL_PATH)/csstoh.c
 POWERTOP_CSS_SOURCE := $(LOCAL_PATH)/powertop.css
 GEN_CSSTOH := $(LOCAL_PATH)/csstoh
@@ -107,3 +110,5 @@ LOCAL_SRC_FILES += \
 
 include $(BUILD_EXECUTABLE)
 
+# end hack for arm64
+endif
