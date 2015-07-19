@@ -2,7 +2,7 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 # Wrapper to fix arm 64-bit builds using host prebuilt gcc
-ifneq ($(TARGET_ARCH),arm64)
+ifeq ($(TARGET_ARCH),)
 
 CSSTOH_SOURCE := $(LOCAL_PATH)/csstoh.c
 POWERTOP_CSS_SOURCE := $(LOCAL_PATH)/powertop.css
